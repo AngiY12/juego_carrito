@@ -19,7 +19,26 @@ Un simulador de conducción en 3D desarrollado completamente en Python utilizand
 ## 🛠️ Requisitos Previos
 
 Para ejecutar este proyecto, asegúrate de tener instalado Python en tu sistema, junto con las siguientes librerías:
-
 ```bash
 pip install PyOpenGL PyOpenGL_accelerate
 pip install Pillow
+```
+## 📂 Recursos Necesarios (Assets)
+El script busca los siguientes archivos de imagen en el directorio raíz para aplicar las texturas. Si no los encuentra, el programa no se detendrá y aplicará colores sólidos por defecto para evitar errores:
+
+* asfalto.jpg (Textura para la carretera)
+
+* hierba.jpg (Textura para el suelo/entorno)
+
+* montana.jpg (Textura para las montañas del fondo)
+
+## 🏗️ Estructura del Código
+El proyecto está diseñado bajo el paradigma de Programación Orientada a Objetos (POO), dividiendo las responsabilidades de la siguiente manera:
+
+* Textura: Manejo y carga de imágenes en memoria usando la librería PIL.
+
+* Objeto3D: Clase base abstracta que maneja las matrices de traslación, rotación y escalado (glPushMatrix, glPopMatrix).
+
+* Subclases (Auto, Casa, Montana, Carretera, Arbol, Suelo): Cada una hereda de Objeto3D y define su propio método _dibujar() utilizando las primitivas gráficas de GLUT.
+
+* Escena: Orquestador principal que maneja el loop de renderizado general, las cámaras, la iluminación y la detección de salidas de pista.
